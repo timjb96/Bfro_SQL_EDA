@@ -81,7 +81,7 @@ where bfro_reports_geocoded.classification != 'Class C'
 group by bfro_reports_geocoded.state
 order by NumSightings DESC
 
---Can we do the above with just one query using CTE? below doesn't work, but it should?
+--above using CTE
 With sightingtotals AS (
     Select bfro_reports_geocoded.state as STATE, count(bfro_reports_geocoded.number) FROM bfro_reports_geocoded
     WHERE bfro_reports_geocoded.classification = 'Class A'
@@ -136,6 +136,7 @@ from bfro_reports_geocoded
 where bfro_reports_geocoded.classification != 'Class C'
 and bfro_reports_geocoded.season = 'Unknown'
 group by season, state
+order by Statepercent
 
 --so, we can drop sightings in the 'unknown' season, and the states with under 27 sightings
 
@@ -160,8 +161,5 @@ from bfro_reports_geocoded
 where bfro_reports_geocoded.classification != 'Class C'
 and bfro_reports_geocoded.season != 'Unknown'
 group by season, state
-order by allpercent desc
+order by state
 
---create a table that has the unecessary entries dropped
-
---create a view
