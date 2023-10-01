@@ -60,11 +60,50 @@ The only real trouble date here is the 1869 date- so we will want to remove that
 
 ![Screen Shot 2023-09-19 at 7 44 01 PM](https://github.com/timjb96/Bfro_SQL_EDA/assets/112847821/90a1d57b-2dde-4750-aaf2-b95fba145ce2)
 
+Now, we can start looking at states and their percentage of sightings. We do this with the below two queries, first to determine the total number of sightings, and then to calculate state-percentages:
+
+![Screen Shot 2023-10-01 at 10 56 43 AM](https://github.com/timjb96/Bfro_SQL_EDA/assets/112847821/5a2aaa1d-c70e-423b-8a7e-072bda4c9d7e)
+
+![Screen Shot 2023-10-01 at 10 56 00 AM](https://github.com/timjb96/Bfro_SQL_EDA/assets/112847821/4d9b5588-8460-49ca-8fbf-436a67ad5444)
+
+If this were not in a data.world hosted query environment, we could also use CTE to accomplish the above:
+
+![Screen Shot 2023-10-01 at 10 57 27 AM](https://github.com/timjb96/Bfro_SQL_EDA/assets/112847821/2e30ae44-0754-476c-95c5-a4ca8abf179b)
+
+Then, utilizing excel, I was able to determine the IQR range to see if there are any states that are outliers. Based on this, we can disregard states with under 27 sightings, as that is below the lowest IQR, as these are outliers based on our dataset. 
+
+Then, we shift to examining latitude and longitudes for later plotting- using a Left Join, we can determine average latitude and longitude values for each states, which would be useful in plotting out any map-based charts. 
+
+![Screen Shot 2023-10-01 at 11 00 37 AM](https://github.com/timjb96/Bfro_SQL_EDA/assets/112847821/11c193be-b155-48a7-b1f7-093256871e98)
+
+Now to move on to analyzing by season. First, we will group the sightings by season using the below query:
+
+![Screen Shot 2023-10-01 at 11 01 28 AM](https://github.com/timjb96/Bfro_SQL_EDA/assets/112847821/4552d16f-ae10-4bd9-b014-fd5fa5da4582)
+
+![Screen Shot 2023-10-01 at 11 02 02 AM](https://github.com/timjb96/Bfro_SQL_EDA/assets/112847821/c3fdbf9f-72f4-4c67-945e-17a33ab73f91)
+
+This 'Unknown' category seems to be potentially problematic, given that it won't help us with anything meaningful in terms of finding trends. Can we remove these sightings based on the above established IQR ranges?
+
+![Screen Shot 2023-10-01 at 11 04 33 AM](https://github.com/timjb96/Bfro_SQL_EDA/assets/112847821/e1ab1758-fc1c-4513-8726-36c87b162b76)
 
 
+The above query yields the following table:
 
+![Screen Shot 2023-10-01 at 11 04 47 AM](https://github.com/timjb96/Bfro_SQL_EDA/assets/112847821/64904388-f7e3-4840-be70-9635d2034c38)
 
+We can see here that the number of sightings in an Unknown season by state is well below the limit of 27 we found in our earlier query. As a result, we can disregard these sightings as well as outliers that are not statistically significant. 
 
+Finally, we want to examine the number of sightings by season, by state:
+
+![Screen Shot 2023-10-01 at 11 09 58 AM](https://github.com/timjb96/Bfro_SQL_EDA/assets/112847821/80f18156-17bb-4ad6-b009-f180647fcb47)
+
+![Screen Shot 2023-10-01 at 11 10 43 AM](https://github.com/timjb96/Bfro_SQL_EDA/assets/112847821/27bdfc56-fdd5-42c2-9760-74ec45be3248)
+
+The above analysis allows us to draw some helpful conclusions. Primarily, it shows us states like California, Oregon and Washington on the West Coast are some of the states with the highest number of sightings, as well as Florida and Ohio. Additionally, we can see that Summer is the season in which individuals are most likely to see a Bigfoot. 
+
+However, this unfortunately gives us little in the way of finding a trend that causes more sightings to occur in one region vs. another. Since the majority of sightings occur in States like Washington, California, Florida, and Oregon, which are known for their outdoor activities and hiking/camping, and in the Summer when the majority of such activities would take place, we can explain most of what we're seeing in this data as 'people are out in the wilderness more often in Summer in states known for their hiking and camping options; therefore, people are more likely to experience a Bigfoot sighting, as they are more likely to be in the area where a sighting would occur.
+
+Further, this also suggests that weather may have some affect on the number of reports themselves- winter months are more likely to cause visibility issues that may downgrade a report from a reliable A or B to a Class C.
 
 
 
