@@ -1,4 +1,4 @@
-# Bfro_SQL_EDA
+# Bfro SQL Exploratory Data Analysis
 Exploratory Analysis of BFRO data using SQL, some Excel
 Skills demonstrated: Joins, CTE's, Window Functions, Aggregate Functions, //Temp Tables, //Creating Views
 
