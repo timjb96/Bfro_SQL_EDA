@@ -1,6 +1,6 @@
 # Bfro SQL Exploratory Data Analysis
 Exploratory Analysis of BFRO data using SQL, some Excel
-Skills demonstrated: Joins, CTE's, Window Functions, Aggregate Functions, //Temp Tables, //Creating Views
+Skills demonstrated: Joins, CTE's, Window Functions, Aggregate Functions
 
 ## Project Overview
 The purpose of this Analysis is to do an exploration of data from the Bigfoot Field Researchers Organization, or BFRO, on Bigfoot sightings within the Continental United States. 
